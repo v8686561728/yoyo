@@ -3,7 +3,7 @@ import { shallow, configure } from "../../../enzyme";
 import Footer from "./Footer";
 describe("<Footer/>", () => {
   const props = {
-    classes: "root"
+    className: "root"
   };
   let wrapper;
   beforeEach(() => {
