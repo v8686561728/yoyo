@@ -35,18 +35,14 @@
     "redux-form": "^8.2.0",
     "redux-thunk": "^2.3.0"
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!**/node_modules/**"
-    ]
-  },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "test-coverage": "react-scripts test --env=jsdom --coverage"
+
+    "test-coverage": "react-scripts test --env=jsdom --watchAll=false --coverage -u"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -62,5 +58,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  
+    
+
+"jest": {
+"collectCoverageFrom": [
+"src/**/*.js",
+"!<rootDir>/node_modules/",
+"!<rootDir>/src/index.js",
+"!<rootDir>/src/serviceWorker.js"
+    ]
   }
+
+
 }
