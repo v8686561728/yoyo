@@ -1,7 +1,7 @@
 .profileHeader {
     min-height: 25%;
     width: 100%;
-    background-image: url('../images/ProfileImage.png');
+    background-image: url('https://res.cloudinary.com/doip16zsy/image/upload/v1581744158/yoyo/ProfileImage_c4zyut.jpg');
     object-fit: cover;
 }
 

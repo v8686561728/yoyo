@@ -7,7 +7,7 @@ import Landing from "./landing/Landing";
 import history from "./common/components/history";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { LocalizeProvider } from "react-localize-redux";
-
+import Login from "../modules/login/component/index"
 function Loading({ error }) {
   if (error) {
     return (<h2 style={{
@@ -79,6 +79,7 @@ class App extends Component {
               <Route exact path="/giftCards" component={GiftsListContainer} />
               <Route exact path="/Profile" component={ProfileContainers} />
               <Route exact path="/GiftsSend" component={GiftsSendContainer} />
+              <Route exact path="/Login" component={Login} />
               <Route
                 exact
                 path="/GiftsReceived"

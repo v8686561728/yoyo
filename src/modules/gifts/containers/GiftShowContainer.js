@@ -155,7 +155,7 @@ class GiftShowContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+export const mapStateToProps = (state, ownProps) => {
   return {
     gift: state.gifts.giftCard,
     user: state.users.UserDetails,

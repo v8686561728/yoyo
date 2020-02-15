@@ -9,7 +9,7 @@ export const fetchCards = () => async (dispatch) => {
     })
 }
 
-export const fetchCard = (id) => async (dispatch) => {
+export const fetchCard = (id) =>  async (dispatch) => {
     const response = await axiosWrapper.get(`/giftCards/${id}`);
     dispatch ({
         type: FETCH_CARD,

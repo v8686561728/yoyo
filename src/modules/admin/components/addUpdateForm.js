@@ -8,7 +8,7 @@ import history from '../../common/components/history';
 import {DateFormatter} from '../../common/components/DateFormatter';
 import Snackbar  from "../../common/components/Snackbar";
 
-class addUpdateForm extends Component {
+export class AddUpdateForm extends Component {
   constructor(props) {
     super(props);
   
@@ -493,4 +493,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {adminAddCard, adminUpdateCard})(withRouter(addUpdateForm));
+export default connect(mapStateToProps, {adminAddCard, adminUpdateCard})(withRouter(AddUpdateForm));

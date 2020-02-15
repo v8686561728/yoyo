@@ -9,7 +9,7 @@ const GiftShow = props => {
   const { data } = props;
 
   return (
-    <div style={{ padding: "4%" }}>
+    <div id="container" style={{ padding: "4%" }}>
       <div className={Styles.detailsPage}>
         <Grid container spacing={0}>
           <Grid item xs={12} sm={5} className={Styles.cardContainer}>
@@ -35,9 +35,9 @@ const GiftShow = props => {
               <p className={Styles.label}> RATING & REVIEWS:</p>
               {
                 data.cardComments ? 
-                data.cardComments.map(comment => {
+                data.cardComments.map((comment,key) => {
                 return (
-                  <div className={Styles.commentsSection}>
+                  <div key={key} className={Styles.commentsSection}>
                     <p className={Styles.commentorName}> {comment.first_name} {comment.last_name}<span className={Styles.commentDate}>{DateFormatter(comment.commented_on)}</span></p>
                     <p className={Styles.comment}>{comment.comment}</p>
                     <StarRatingComponent

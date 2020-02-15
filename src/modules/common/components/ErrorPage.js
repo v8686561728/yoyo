@@ -1,8 +1,8 @@
 import React from 'react'
-import notFound from '../../../assets/images/404.png'
+import {imageURLS} from '../../../assets/images/imageUrls'
 const ErrorPage = () => {
   return (
-    <img src={notFound} alt = "404: Page not found" style={{width:'100%', height: '100vh'}} />
+    <img src={imageURLS.notFound} alt = "404: Page not found" style={{width:'100%', height: '100vh'}} />
   )
 }
 

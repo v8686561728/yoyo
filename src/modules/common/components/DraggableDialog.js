@@ -82,7 +82,7 @@ class DraggableDialog extends React.Component {
         handleSubmit,
         isSubmitting
       }) => (
-        <form onSubmit={handleSubmit}>
+        <form id="submit" onSubmit={handleSubmit}>
           <TextField
             fullWidth
             type="email"
