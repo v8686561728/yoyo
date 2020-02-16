@@ -35,7 +35,8 @@ export class Header extends Component {
   }
   render() {
     const { showErrorSnack } = this.state
-    const { classes } = this.props;
+    const { classes ,isLoggedIn} = this.props;
+  
     return (
       <div className={classes.root}>
         {
@@ -54,27 +55,27 @@ export class Header extends Component {
               </Button>
             </Typography>
             {/* {this.props.isLoggedIn ? <Button color="inherit" onClick={this.addUpdateForm}>ADD UPDATE FORM</Button> : null} */}
-            {this.props.isLoggedIn ? (
+            {isLoggedIn ? (
               <Button id="giftReceived"className={Styles.headerButton} color="inherit" onClick={this.giftsReceived}>
                 GIFTS RECEIVED
               </Button>
             ) : null}
-            {this.props.isLoggedIn ? (
+            {isLoggedIn ? (
               <Button id="giftSent" className={Styles.headerButton} color="inherit" onClick={this.giftsSend}>
                 GIFTS SENT
               </Button>
             ) : null}
-            {this.props.isLoggedIn ? (
+            {isLoggedIn ? (
               <Button id="profile" className={Styles.headerButton} color="inherit" onClick={this.myProfile}>
-                MY PROFILE
+                {this.props.userDetails.first_name}
               </Button>
             ) : null}
             <Button id="login" className={Styles.headerButton}
               color="inherit"
-              onClick={this.logOut}
+              onClick={this.props.isLoggedIn ?this.logOut: this.logIn }
              
             >
-              {this.props.isLoggedIn ? "LOGOUT" : "LOGIN"}
+              {isLoggedIn ? "LOGOUT" : "LOGIN"}
             </Button>
           </Toolbar>
         </AppBar>
@@ -100,8 +101,12 @@ export class Header extends Component {
   logOut = () => {
     this.props.logout();
     history.push("/");
-    window.sessionStorage.removeItem("user");
+    window.sessionStorage.removeItem("login");
+    window.localStorage.removeItem("user");
     window.sessionStorage.removeItem("usertype");
+  };
+  logIn = () => {
+    history.push("/login");
   };
 
 }
@@ -116,6 +121,7 @@ export const mapStateToProps = state => {
     userDetails: state.login.detailsObject
   };
 };
+
 
 export const mapDispatchToProps = dispatch => {
   return bindActionCreators({ login, logout, createUser }, dispatch);

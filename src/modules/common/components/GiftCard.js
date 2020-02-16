@@ -20,7 +20,7 @@ export const styles = theme => ({
     textAlign: "center"
   },
   media: {
-    height: 0,
+    height: 40,
     flexShrink: 1,
     flexGrow: 1,
     paddingTop: "56.25%"
@@ -50,13 +50,13 @@ export const styles = theme => ({
 export class GiftCard extends React.Component {
   state = { expanded: false };
 
-  // handleExpandClick = () => {
-  //   this.setState(state => ({ expanded: !state.expanded }));
-  // };
+  handleExpandClick = () => {
+    this.setState(state => ({ expanded: !state.expanded }));
+  };
 
-  // handleClickCard = () => {
-  //   this.props.fetchCard(this.props.giftCard.id);
-  // }
+  handleClickCard = () => {
+    this.props.fetchCard(this.props.giftCard.id);
+  }
 
   render() {
     const { classes, giftCard, userEmail } = this.props;

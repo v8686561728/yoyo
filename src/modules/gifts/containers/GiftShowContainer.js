@@ -127,7 +127,7 @@ class GiftShowContainer extends Component {
      'You need more points to gift this card' : 
      'You need '+(cardPoints - balance_points)+' more points to gift this card'
     return (
-      <div>
+      <React.Fragment>
         {showErrorSnackBar ? (
           <Snackbar
             message={
@@ -150,7 +150,7 @@ class GiftShowContainer extends Component {
             this.validateSend(email);
           }}
         />
-      </div>
+        </React.Fragment>
     );
   }
 }

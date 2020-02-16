@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Loadable from "react-loadable";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import Header from "./header/components/Header";
@@ -7,7 +7,7 @@ import Landing from "./landing/Landing";
 import history from "./common/components/history";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { LocalizeProvider } from "react-localize-redux";
-import Login from "../modules/login/component/index"
+import Login from "../modules/header/components/Login"
 function Loading({ error }) {
   if (error) {
     return (<h2 style={{
@@ -67,11 +67,11 @@ const ErrorPage = Loadable({
   loading: Loading
 });
 
-class App extends Component {
-    render() {
+const App=()=>  {
+
         return (
         <LocalizeProvider>
-          <Header />
+          <Header isLoggedIn={sessionStorage.getItem("login")}/>
           <Router history={history}>
             <Switch>
               {/* <Route path="/giftCards/new" exact component={GiftCreateContainer} /> */}
@@ -96,6 +96,6 @@ class App extends Component {
         </LocalizeProvider>
         );
     }
-}
+
 
 export default App

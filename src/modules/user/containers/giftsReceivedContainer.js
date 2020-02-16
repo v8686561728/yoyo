@@ -50,9 +50,9 @@ class GiftsReceivedContainer extends Component {
         </h2>
         } else{
         return (
-        <div>
+          <React.Fragment>
           <GiftsReceived data={this.props.receivedCards} redeemCard={this.handleRedeemCard} />
-        </div>
+          </React.Fragment>
       )
     } 
   } else {

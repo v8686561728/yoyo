@@ -49,7 +49,7 @@ const GiftShow = props => {
                   </div>
                 )
               })
-            :  <div>Loading User Reviews..</div>}
+            :     <React.Fragment>Loading User Reviews..   </React.Fragment>}
             </div>
           </Grid>
           <Grid item xs={12} sm={6} className={Styles.detailsContainer}>

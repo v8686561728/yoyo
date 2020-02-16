@@ -33,9 +33,9 @@ class GiftsSendContainer extends Component {
         </h2>
         } else {
         return (
-          <div>
+          <React.Fragment>
             <GiftsSent data={this.props.sentCards} />
-          </div>
+            </React.Fragment>
         )
       }    
     } else {

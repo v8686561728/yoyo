@@ -47,7 +47,7 @@ export class AddUpdateForm extends Component {
         showUpdateSnackBar: false,
         showSuccessSnackBar: false,
       }
-    this.clearInput = this.clearInput.bind(this);
+    this.clearInput = this.clearInput;
  };
 
  updatePayload = {
@@ -77,7 +77,7 @@ componentDidMount () {
 
  clearInput() {
   this.setState(
-    {
+    { error:false,
       cardNameValue: '',
       cardNameError: false,
       cardNameHelperText: '',
@@ -112,12 +112,14 @@ componentDidMount () {
   );
 }
 
+
   handleCardNameChange = event => {
     let value = event.target.value;
     if (/^[A-Za-z\s]+$/.test(value) && value.length > 0 && value.length < 100) {
       this.setState({
         cardNameValue: value,
         cardNameError: false,
+        error:false,
         cardNameHelperText: ''
       });
       this.updatePayload = {...this.updatePayload, cardName: value};
@@ -125,6 +127,7 @@ componentDidMount () {
       this.setState({
         cardNameValue: value,
         cardNameError: true,
+        error:true,
         cardNameHelperText: "Only alphabets of max length 100 are accepted"
       });
     }
@@ -135,6 +138,7 @@ componentDidMount () {
       this.setState({
         cardPointsValue: value,
         cardPointsError: false,
+        error:false,
         cardPointsHelperText: ''
       });
       this.updatePayload = {...this.updatePayload, cardPoints: value};
@@ -142,6 +146,7 @@ componentDidMount () {
       this.setState({
         cardPointsValue: value,
         cardPointsError: true,
+        error:true,
         cardPointsHelperText: "Only whole numbers are accepted"
       });
     }
@@ -152,6 +157,7 @@ componentDidMount () {
       this.setState({
         cardCategoryValue: value,
         cardCategoryError: false,
+        error:false,
         cardCategoryHelperText: ''
       });
       this.updatePayload = {...this.updatePayload, cardCategory: value};
@@ -159,6 +165,7 @@ componentDidMount () {
       this.setState({
         cardCategoryValue: value,
         cardCategoryError: true,
+        error:true,
         cardCategoryHelperText: "Only alphabets of max length 100 are accepted"
       });
     }
@@ -169,6 +176,7 @@ componentDidMount () {
       this.setState({
         cardRetailerValue: value,
         cardRetailerError: false,
+        error:false,
         cardRetailerHelperText: ''
       });
       this.updatePayload = {...this.updatePayload, cardRetailer: value};
@@ -176,6 +184,7 @@ componentDidMount () {
       this.setState({
         cardRetailerValue: value,
         cardRetailerError: true,
+        error:true,
         cardRetailerHelperText: "Only alphabets of max length 100 are accepted"
       });
     }
@@ -189,6 +198,7 @@ componentDidMount () {
       this.setState({
         cardExpiryDateValue: value,
         cardExpiryDateError: false,
+        error:false,
         cardExpiryDateHelperText: ''
       })
       const cardExpiryDate = new Date(value)
@@ -197,6 +207,7 @@ componentDidMount () {
       this.setState({
         cardExpiryDateValue: value,
         cardExpiryDateError: true,
+        error:true,
         cardExpiryDateHelperText: "Expiry Date must be more than current date"
       });
     }
@@ -207,6 +218,7 @@ componentDidMount () {
       this.setState({
         cardCountValue: value,
         cardCountError: false,
+        error:false,
         cardCountHelperText: ''
       });
       this.updatePayload = {...this.updatePayload, cardCount: value};
@@ -214,6 +226,7 @@ componentDidMount () {
       this.setState({
         cardCountValue: value,
         cardCountError: true,
+        error:true,
         cardCountHelperText: "Only whole numbers are accepted"
       });
     }
@@ -224,6 +237,7 @@ componentDidMount () {
       this.setState({
         cardImageValue: value,
         cardImageError: false,
+        error:false,
         cardImageHelperText: ''
       });
       this.updatePayload = {...this.updatePayload, cardImage: value};
@@ -231,6 +245,7 @@ componentDidMount () {
       this.setState({
         cardImageValue: value,
         cardImageError: true,
+        error:true,
         cardImageHelperText: "Only valid image links of max length 10000 are accepted"
       });
     }
@@ -241,6 +256,7 @@ componentDidMount () {
       this.setState({
         cardVendorValue: value,
         cardVendorError: false,
+        error:false,
         cardVendorHelperText: ''
       });
       this.updatePayload = {...this.updatePayload, cardVendor: value};
@@ -248,6 +264,7 @@ componentDidMount () {
       this.setState({
         cardVendorValue: value,
         cardVendorError: true,
+        error:true,
         cardVendorHelperText: "Only alphabets of max length 100 are accepted"
       });
     }
@@ -258,6 +275,7 @@ componentDidMount () {
       this.setState({
         cardShortDescValue: value,
         cardShortDescError: false,
+        error:false,
         cardShortDescHelperText: ''
       });
       this.updatePayload = {...this.updatePayload, cardShortDesc: value};
@@ -265,6 +283,7 @@ componentDidMount () {
       this.setState({
         cardShortDescValue: value,
         cardShortDescError: true,
+        error:true,
         cardShortDescHelperText: "Only alphabets of max length 100 are accepted"
       });
     }
@@ -275,6 +294,7 @@ componentDidMount () {
       this.setState({
         cardLongDescValue: value,
         cardLongDescError: false,
+        error:false,
         cardLongDescHelperText: ''
       });
       this.updatePayload = {...this.updatePayload, cardLongDesc: value};
@@ -282,6 +302,7 @@ componentDidMount () {
       this.setState({
         cardLongDescValue: value,
         cardLongDescError: true,
+        error:true,
         cardLongDescHelperText: "Only alphabets of max length 10000 are accepted"
       });
     }
@@ -291,10 +312,8 @@ componentDidMount () {
   addUpdateCard = () => {
     // let cardExpiryDateValue = new Date(this.state.cardExpiryDateValue).getTime();
     // let currentDate = new Date().getTime()
-    if(this.state.cardNameError || this.state.cardPointsError || this.state.cardCategoryError ||
-    this.state.cardRetailerError  || this.state.cardExpiryDateError || this.state.cardCountError ||
-    this.state.cardImageError  || this.state.cardVendorError  || this.state.cardShortDescError ||
-    this.state.cardLongDescError || this.state.cardNameValue === '' || this.state.cardPointsValue === ''|| this.state.cardCategoryValue === ''||
+    if(this.state.error
+    || this.state.cardNameValue === '' || this.state.cardPointsValue === ''|| this.state.cardCategoryValue === ''||
     this.state.cardRetailerValue === '' || this.state.cardExpiryDateValue === '' || this.state.cardCountValue === ''||
     this.state.cardImageValue  === ''|| this.state.cardVendorValue  === ''|| this.state.cardShortDescValue === ''||
     this.state.cardLongDescValue === '') {
@@ -358,6 +377,7 @@ componentDidMount () {
     return (
       <React.Fragment>
            <InputTypeComponent
+           name='NAME'
             styles={{ marginTop: "1rem", marginBottom: "1rem", marginLeft: "1rem", width: "45%" }}
             inputType="text"
             inputPlaceholder={"Card Name"}
@@ -365,10 +385,11 @@ componentDidMount () {
             inputError={this.state.cardNameError}
             endAdornment={false}
             inputHelperText={this.state.cardNameHelperText}
-            handleInputChange={this.handleCardNameChange.bind(this)}
+            handleInputChange={this.handleCardNameChange}
             ref = "myInput"
           /> 
             <InputTypeComponent
+            name="POINTS"
             styles={{ marginTop: "1rem", marginBottom: "1rem", marginLeft: "1rem", width: "45%" }}
             inputType="text"
             inputPlaceholder={"Card Points"}
@@ -376,10 +397,11 @@ componentDidMount () {
             inputError={this.state.cardPointsError}
             endAdornment={false}
             inputHelperText={this.state.cardPointsHelperText}
-            handleInputChange={this.handleCardPointsChange.bind(this)}
+            handleInputChange={this.handleCardPointsChange}
             ref = "myInput"
           /> 
             <InputTypeComponent
+            name="CATEGORY"
             styles={{ marginTop: "1rem", marginBottom: "1rem", marginLeft: "1rem", width: "45%" }}
             inputType="text"
             inputPlaceholder={"Card Category"}
@@ -387,7 +409,7 @@ componentDidMount () {
             inputError={this.state.cardCategoryError}
             endAdornment={false}
             inputHelperText={this.state.cardCategoryHelperText}
-            handleInputChange={this.handleCardCategoryChange.bind(this)}
+            handleInputChange={this.handleCardCategoryChange}
             ref = "myInput"
           /> 
             <InputTypeComponent
@@ -398,7 +420,7 @@ componentDidMount () {
             inputError={this.state.cardRetailerError}
             endAdornment={false}
             inputHelperText={this.state.cardRetailerHelperText}
-            handleInputChange={this.handleCardRetailerChange.bind(this)}
+            handleInputChange={this.handleCardRetailerChange}
             ref = "myInput"
           /> 
             <InputTypeComponent
@@ -409,7 +431,7 @@ componentDidMount () {
             inputError={this.state.cardExpiryDateError}
             endAdornment={false}
             inputHelperText={this.state.cardExpiryDateHelperText}
-            handleInputChange={this.handleCardExpiryDateChange.bind(this)}
+            handleInputChange={this.handleCardExpiryDateChange}
             ref = "myInput"
           /> 
             <InputTypeComponent
@@ -420,7 +442,7 @@ componentDidMount () {
             inputError={this.state.cardCountError}
             endAdornment={false}
             inputHelperText={this.state.cardCountHelperText}
-            handleInputChange={this.handleCardCountChange.bind(this)}
+            handleInputChange={this.handleCardCountChange}
             ref = "myInput"
           /> 
             <InputTypeComponent
@@ -431,7 +453,7 @@ componentDidMount () {
             inputError={this.state.cardImageError}
             endAdornment={false}
             inputHelperText={this.state.cardImageHelperText}
-            handleInputChange={this.handleCardImageChange.bind(this)}
+            handleInputChange={this.handleCardImageChange}
             ref = "myInput"
           /> 
             <InputTypeComponent
@@ -442,7 +464,7 @@ componentDidMount () {
             inputError={this.state.cardVendorError}
             endAdornment={false}
             inputHelperText={this.state.cardVendorHelperText}
-            handleInputChange={this.handleCardVendorChange.bind(this)}
+            handleInputChange={this.handleCardVendorChange}
             ref = "myInput"
           /> 
             <InputTypeComponent
@@ -453,7 +475,7 @@ componentDidMount () {
             inputError={this.state.cardShortDescError}
             endAdornment={false}
             inputHelperText={this.state.cardShortDescHelperText}
-            handleInputChange={this.handleCardShortDescChange.bind(this)}
+            handleInputChange={this.handleCardShortDescChange}
             ref = "myInput"
           /> 
            <InputTypeComponent
@@ -464,7 +486,7 @@ componentDidMount () {
             inputError={this.state.cardLongDescError}
             endAdornment={false}
             inputHelperText={this.state.cardLongDescHelperText}
-            handleInputChange={this.handleCardLongDescChange.bind(this)}
+            handleInputChange={this.handleCardLongDescChange}
             ref = "myInput"
           /> 
          		          <div style={{marginTop:'10px', marginBottom: '100px'}}>
