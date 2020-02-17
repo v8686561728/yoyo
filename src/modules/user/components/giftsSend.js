@@ -21,7 +21,7 @@ const styles = theme => ({
 });
 
 
-function GiftsSend(props) {
+export function GiftsSend(props) {
   const { classes, data } = props;
   
   return (

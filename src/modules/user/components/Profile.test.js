@@ -1,19 +1,23 @@
 import React from "react";
 import { shallow } from "../../../enzyme";
 import { shallowToJson } from "enzyme-to-json";
-import { GiftsList } from "./GiftsList";
+import { Profile } from "./Profile";
 
-describe("GiftsList", () => {
+describe("Profile", () => {
   let wrapper, props;
 
   props = {
-    giftCardsFiltered: [],
+    // email: ""
+    detailsObject: {
+      email: ""
+    },
+    data: [],
     classes: {
       root: "root"
     }
   };
-  it("should render GiftsList", () => {
-    wrapper = shallow(<GiftsList {...props} />);
+  it("should render Profile", () => {
+    wrapper = shallow(<Profile {...props} />);
   });
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });

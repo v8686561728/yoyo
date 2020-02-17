@@ -10,7 +10,8 @@ describe("<Header/>", () => {
       classes: {
         root: "root",
         toolBar: "toolBar",
-        grow: "grow"
+        grow: "grow",
+        userDetails:{first_name:"vinod"}
       },
       isLoggedIn:false
     };
@@ -45,9 +46,11 @@ describe("<Header/>", () => {
         classes: {
           root: "root",
           toolBar: "toolBar",
-          grow: "grow"
+          grow: "grow",
+          
         },
-        isLoggedIn:true
+        isLoggedIn:true,
+        userDetails:{first_name:"vinod"}
       };
 
     wrapper = shallow(<Header {...props} logout={jest.fn()} />);
@@ -62,7 +65,8 @@ describe("<Header/>", () => {
           toolBar: "toolBar",
           grow: "grow"
         },
-        isLoggedIn:true
+        isLoggedIn:true,
+        userDetails:{first_name:"vinod"}
       };
 
     wrapper = shallow(<Header {...props}  />);
@@ -76,7 +80,8 @@ describe("<Header/>", () => {
           toolBar: "toolBar",
           grow: "grow"
         },
-        isLoggedIn:true
+        isLoggedIn:true,
+        userDetails:{first_name:"vinod"}
       };
 
     wrapper = shallow(<Header {...props}  />);
@@ -89,7 +94,8 @@ describe("<Header/>", () => {
           toolBar: "toolBar",
           grow: "grow"
         },
-        isLoggedIn:true
+        isLoggedIn:true,
+        userDetails:{first_name:"vinod"}
       };
 
     wrapper = shallow(<Header {...props}  />);
@@ -103,7 +109,8 @@ describe("<Header/>", () => {
           toolBar: "toolBar",
           grow: "grow"
         },
-        isLoggedIn:true
+        isLoggedIn:true,
+        userDetails:{first_name:"vinod"}
       };
 
     wrapper = shallow(<Header {...props}  />);

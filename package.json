@@ -14,7 +14,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.4.4",
-    "firebase": "^6.0.2",
+    "extract-text-webpack-plugin": "^3.0.2",
     "font-awesome": "^4.7.0",
     "formik": "^1.5.7",
     "fs-extra": "^8.0.1",
@@ -24,6 +24,7 @@
     "material-ui-search-bar": "^0.4.2",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
+    "react-app-rewire-workbox": "^2.0.1",
     "react-dom": "^16.8.6",
     "react-draggable": "^3.3.0",
     "react-facebook-login": "^4.1.1",
@@ -41,14 +42,16 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.2.0",
     "redux-thunk": "^2.3.0",
-    "sinon": "^8.1.1"
+    "sinon": "^8.1.1",
+    "workbox-expiration": "^5.0.0",
+    "workbox-routing": "^5.0.0",
+    "workbox-strategies": "^5.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "eject": "react-scripts eject",
-    "test-coverage": "react-scripts test --env=jsdom --watchAll=false --coverage -u"
+    "test": "react-scripts test --env=jsdom --watchAll=false --coverage -u"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -74,5 +77,8 @@
       "!<rootDir>/src/index.js",
       "!<rootDir>/src/serviceWorker.js"
     ]
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.1.5"
   }
 }

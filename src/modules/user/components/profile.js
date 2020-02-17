@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Styles from '../../../assets/css/Profile.module.css';
 import Paper from '@material-ui/core/Paper';
 
-class Profile extends Component {
+export class Profile extends Component {
   render() {
     let {
       email,

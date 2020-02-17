@@ -10,7 +10,7 @@ import { fetchCard, updateCardCount } from "../state/actions";
 import GiftShow from "../components/GiftShow";
 import Snackbar from "../../common/components/Snackbar";
 import * as emailjs from 'emailjs-com';
-class GiftShowContainer extends Component {
+export class GiftShowContainer extends Component {
   state = {
     showErrorSnackBar: false,
     showSuccessSnackBar: false,

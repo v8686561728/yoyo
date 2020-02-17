@@ -509,7 +509,7 @@ componentDidMount () {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     giftCards: state.gifts.giftCards
   }

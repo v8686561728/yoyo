@@ -43,12 +43,12 @@ const GiftShowContainer = Loadable({
 });
 
 const GiftsSendContainer = Loadable({
-  loader: () => import("./user/containers/giftsSendContainer"),
+  loader: () => import("./user/containers/GiftsSendContainer"),
   loading: Loading
 });
 
 const GiftsReceivedContainer = Loadable({
-  loader: () => import("./user/containers/giftsReceivedContainer"),
+  loader: () => import("./user/containers/GiftsReceivedContainer"),
   loading: Loading
 });
 
@@ -58,7 +58,7 @@ const GiftsReceivedContainer = Loadable({
 // });
 
 const AddUpdateForm = Loadable({
-  loader: () => import("./admin/components/addUpdateForm"),
+  loader: () => import("./admin/components/AddUpdateForm"),
   loading: Loading
 });
 

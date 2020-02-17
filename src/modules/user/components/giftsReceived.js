@@ -22,7 +22,7 @@ const styles = theme => ({
   },
 });
 
-function GiftsReceived(props) {
+export function GiftsReceived(props) {
   const { classes, data } = props;
   return (
     <Paper className={classes.root}>

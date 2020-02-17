@@ -19,7 +19,7 @@ const styles = theme => ({
   }
 });
 
-class GiftsList extends React.Component {
+export class GiftsList extends React.Component {
   state = {
     giftCardsFiltered: this.props.giftCardsFiltered,
     page: 0,
