@@ -57,10 +57,10 @@ const GiftsReceivedContainer = Loadable({
 //   loading: Loading
 // });
 
-const AddUpdateForm = Loadable({
-  loader: () => import("./admin/components/AddUpdateForm"),
-  loading: Loading
-});
+// const AddUpdateForm = Loadable({
+//   loader: () => import("./admin/components/AddUpdateForm"),
+//   loading: Loading
+// });
 
 const ErrorPage = Loadable({
   loader: () => import("./common/components/ErrorPage"),
@@ -85,8 +85,8 @@ const App=()=>  {
                 path="/GiftsReceived"
                 component={GiftsReceivedContainer}
               />
-              <Route exact path="/AddUpdateForm" component={AddUpdateForm} />
-              <Route exact path='/AddUpdateForm/:id' component={AddUpdateForm}/>
+              {/* <Route exact path="/AddUpdateForm" component={AddUpdateForm} />
+              <Route exact path='/AddUpdateForm/:id' component={AddUpdateForm}/> */}
               <Route exact path="/" component={Landing} />
               <Route exact path="/404" component={ErrorPage} />
               <Redirect to="/404" />

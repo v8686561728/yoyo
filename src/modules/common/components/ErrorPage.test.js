@@ -1,13 +1,13 @@
 import React from "react";
 import { shallow, configure } from "../../../enzyme";
-import GiftCard from "./GiftCard";
+import ErrorPage from "./ErrorPage";
 
 
-describe("<GiftCard/>", () => {
+describe("<ErrorPage/>", () => {
   
     let wrapper;
     beforeEach(() => {
-      wrapper = shallow(<GiftCard />);
+      wrapper = shallow(<ErrorPage />);
     });
     it("should render", () => {
       expect(wrapper).toBeTruthy();

@@ -61,16 +61,6 @@ exports[`should render App 1`] = `
       <Route
         component={[Function]}
         exact={true}
-        path="/AddUpdateForm"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/AddUpdateForm/:id"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
         path="/"
       />
       <Route

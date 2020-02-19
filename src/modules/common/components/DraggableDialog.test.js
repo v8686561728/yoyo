@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "../../../enzyme";
-import DraggableDialog from './DraggableDialog'
+import DraggableDialog,{PaperComponent} from './DraggableDialog'
 
 describe("<DraggableDialog/>", () => {
    
@@ -16,6 +16,11 @@ describe("<DraggableDialog/>", () => {
         wrapper.find('Formik').simulate('click');
     
       });
+
+      it("call PaperComponent",()=>{
+        wrapper = shallow(<PaperComponent/>);
+        expect(wrapper).toBeTruthy();
+      })
     
   });
   

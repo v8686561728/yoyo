@@ -29,11 +29,12 @@ export const login = object => async dispatch => {
     const {email,password}=object
     try{
       const response = await axiosWrapper.get(`/users?email=${email}&last_name=${password}`);  
-    if(response.data.length>0){
+   
       dispatch ({
         type: LOGIN,
         payload: response.data[0]
       });
+      if(response.data.length>0){
       window.localStorage.setItem("user",JSON.stringify(response.data[0]))
       history.push('/')
     }
