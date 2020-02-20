@@ -11,7 +11,7 @@ const customJSON = log => ({
 });
 remote.apply(log, {
   format: customJSON,
-  url: `${apiURL}/users`
+  url: `${apiURL}/log`
 });
 export const login = object => async dispatch => {
  
@@ -33,13 +33,14 @@ export const login = object => async dispatch => {
       type: LOGIN,
       payload: userData
     });
-    log.info(`user [${profileObj.email}] is logged in at [${new Date()}]`);
+    log.error(`user [${profileObj.email}] is logged in at [${new Date()}]`);
     window.localStorage.setItem("user",JSON.stringify(userData))
     history.push('/')
   }
   else if(object.email){
     
     const {email,password}=object
+    log.info(`user [${email}] tried to login at [${new Date()}]`);
     try{
       const response = await axiosWrapper.get(`/users?email=${email}&last_name=${password}`);  
    
@@ -48,7 +49,7 @@ export const login = object => async dispatch => {
         payload: response.data[0]
       });
       if(response.data.length>0){
-        log.info(`user [${email}] is logged in at [${new Date()}]`);
+       
       window.localStorage.setItem("user",JSON.stringify(response.data[0]))
       history.push('/')
     }
