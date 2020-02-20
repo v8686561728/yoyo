@@ -1,36 +1,31 @@
-import React from "react";
-import { shallow } from "../../../enzyme";
-import GiftShow from "./GiftShow"
+import React from 'react';
+import { shallow } from '../../../enzyme';
+import GiftShow from './GiftShow';
+import SendGiftCardDialog from '../../common/components/DraggableDialog';
 
-describe("<GiftShow/>", () => {
-  
-    let wrapper;
-    beforeEach(() => {
-        let props={
-          data:{
-            cardImage:'cardImage',
-            cardName:'cardImage',
-            cardPoints:'cardPoints',
-            cardCount:'cardCount',
-            cardExpiryDate:'cardExpiryDate',
-            cardComments:[{
-              first_name:'first_name',
-              last_name:'last_name',
-              commented_on:'commented_on',
-              rating:0,
+describe('Show gift test', () => {
+    let props, wrapper;
+    beforeEach (() => {
+        props = {
+            data : {
+                cardComments : ['cardComments']
+            }
+        };
+    })
+    it('should render the GiftShow component', () => {
+        wrapper = shallow(<GiftShow {...props}/>);
+        expect(wrapper).toBeTruthy();
+    })
+    it('should show Loading user reviews if no cardcomments are loaded', ()=>{
+        const props = {
+            data : 'data'
+        };
+        wrapper = shallow(<GiftShow {...props}/>);
+        expect(wrapper).toBeTruthy();
+    })
+    it('should show Loading user reviews if no cardcomments are loaded', ()=>{
+        wrapper = shallow(<GiftShow {...props}/>);
+        expect(wrapper.find(SendGiftCardDialog)).toBeTruthy();
+    })
+})
 
-            }],
-            cardVendor:'cardVendor',
-            cardLongDesc:'cardLongDesc'
-
-          }
-        }
-        wrapper = shallow(<GiftShow {...props} />);
-    });
-    it("should render", () => {
-
-      expect(wrapper).toBeTruthy();
-    });
-    
- 
-  });

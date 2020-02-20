@@ -2,14 +2,14 @@ import { FETCH_CARDS, FETCH_CARD, FETCH_CARD_FILTER, ADMIN_ADD_CARD, UPDATE_CARD
 import axiosWrapper from '../../../../apis/axiosCreate';
 
 export const fetchCards = () => async (dispatch) => {
-    const response = await axiosWrapper.get('/giftCards');    
+    const response = await axiosWrapper.get('/giftCards');   
     dispatch ({
         type: FETCH_CARDS,
         payload: response
     })
 }
 
-export const fetchCard = (id) =>  async (dispatch) => {
+export const fetchCard = (id) => async (dispatch) => {
     const response = await axiosWrapper.get(`/giftCards/${id}`);
     dispatch ({
         type: FETCH_CARD,

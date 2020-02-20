@@ -1,6 +1,6 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 // import history from '../../common/components/history';
-import {login} from "../state/actions/index"
+import { login } from "../state/actions/index";
 import { GoogleLogin } from "react-google-login";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -14,8 +14,8 @@ import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import {google} from "../../../config/constants"
-import {connect} from 'react-redux'
+import { google } from "../../../config/constants";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -40,26 +40,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-
-
-
-
-export  function Login({login}) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+export function Login({ login }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const classes = useStyles();
-  
-  const responseGoogle = (response) => {
-  
-    login(response)
-      
-    }
-    const loginSubmit=(e)=>{
-      e.preventDefault()
-let data={email:email,password:password}
-      login(data)
-    }
+
+  const responseGoogle = response => {
+    login(response);
+  };
+  const loginSubmit = e => {
+    e.preventDefault();
+    let data = { email: email, password: password };
+    login(data);
+  };
   return (
     <Grid
       container
@@ -90,9 +83,10 @@ let data={email:email,password:password}
                 name="email"
                 autoComplete="email"
                 autoFocus
-                onChange={(e)=>{
-                  setEmail(e.target.value)
+                onChange={e => {
+                  setEmail(e.target.value);
                 }}
+                
               />
               <TextField
                 variant="outlined"
@@ -104,8 +98,8 @@ let data={email:email,password:password}
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                onChange={(e)=>{
-                  setPassword(e.target.value)
+                onChange={e => {
+                  setPassword(e.target.value);
                 }}
               />
               <FormControlLabel
@@ -113,12 +107,13 @@ let data={email:email,password:password}
                 label="Remember me"
               />
               <Button
+                id="xyz"
                 type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={(e)=>loginSubmit(e)}
+                onClick={e => loginSubmit(e)}
               >
                 Sign In
               </Button>
@@ -145,13 +140,11 @@ let data={email:email,password:password}
               </Grid>
             </form>
           </div>
-          <Box mt={8}>
-           
-          </Box>
+          <Box mt={8}></Box>
         </div>
       </Grid>
     </Grid>
   );
 }
 
-export default connect(null,{login})(Login)
+export default connect(null, { login })(Login);

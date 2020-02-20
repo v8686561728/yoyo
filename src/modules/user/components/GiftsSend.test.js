@@ -1,29 +1,23 @@
-import React from "react";
-import { shallow } from "../../../enzyme";
-import { GiftsSend } from "./GiftsSend";
+import React from 'react';
+import { shallow } from '../../../enzyme';
+import { GiftsSend, styles } from './GiftsSend';
 
-const styles = theme => ({
-  root: {
-    width: "100%",
-    marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
-  },
-  table: {
-    minWidth: 700
-  }
-});
-
-describe("GiftsSend", () => {
+describe('GiftsSend component testing', () => {
   let wrapper, props;
 
   props = {
-    data: [],
+    data: [
+      {id: "1"}
+    ],
     classes: {
-      root: "root"
+      root: 'root'
     }
   };
-  it("should render GiftReceived", () => {
+  it('should render GiftSend', () => {
     wrapper = shallow(<GiftsSend {...props} styles={styles} />);
+    expect(wrapper).toBeTruthy();
   });
-  expect(wrapper).toMatchSnapshot();
+  it("styles", () => {
+    expect(styles({spacing:{unit:10}})).toBeTruthy();
+  });
 });

@@ -1,119 +1,82 @@
 import React from "react";
 import { shallow } from "../../../enzyme";
+import { shallowToJson } from "enzyme-to-json";
 import { Header } from "./Header";
-import { mapDispatchToProps } from "./Header";
-import { mapStateToProps } from "./Header";
-describe("<Header/>", () => {
-  let wrapper;
+import { mapStateToProps, mapDispatchToProps } from "./Header";
+
+describe("Header", () => {
+  let props, props2, wrapper;
   beforeEach(() => {
-    const props = {
-      classes: {
-        root: "root",
-        toolBar: "toolBar",
-        grow: "grow",
-        userDetails:{first_name:"vinod"}
-      },
-      isLoggedIn:false
+    props = {
+      classes: "root",
+      isLoggedIn: true,
+      userDetails: { first_name: "yudha" }
     };
-    wrapper = shallow(<Header {...props} />);
-  });
-  it("should render", () => {
-    expect(wrapper).toBeTruthy();
+    props2 = {
+      classes: "root",
+      isLoggedIn: false,
+      userDetails: { first_name: "yudha" }
+    };
   });
 
-  it("mapDispatchToProps fuction dispatch logout", () => {
+  it("should render Header component", () => {
+    wrapper = shallow(<Header {...props} />);
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+
+  //myProfile method
+  // it("should trigger myProfile", () => {
+  //   wrapper = shallow(<Header {...props} />);
+  //   console.log(shallowToJson(wrapper));
+  // });
+
+  it("should call mapDispatchToProps", () => {
     const dispatch = jest.fn();
     mapDispatchToProps(dispatch).logout();
   });
-  it("mapDispatchToProps fuction dispatch login", () => {
-    const dispatch = jest.fn();
-    mapDispatchToProps(dispatch).login();
-  });
-  it("mapDispatchToProps fuction dispatch createUser", () => {
-    const dispatch = jest.fn();
-    mapDispatchToProps(dispatch).createUser();
-  });
-  it("mapStateToProps fuction ", () => {
-    const initialState = {
-      login: { loginStatus: undefined, detailsObject: undefined }
-    };
-    expect(mapStateToProps(initialState).loginStatus).toEqual(undefined);
-    expect(mapStateToProps(initialState).detailsObject).toEqual(undefined);
+
+  //login
+  it("should trigger logout click event", () => {
+    wrapper = shallow(<Header logout={jest.fn()} {...props2} />);
+    wrapper.find("#authButton").simulate("click");
   });
 
-  it("simulate login button click", () => {
-    const props = {
-        classes: {
-          root: "root",
-          toolBar: "toolBar",
-          grow: "grow",
-          
-        },
-        isLoggedIn:true,
-        userDetails:{first_name:"vinod"}
-      };
-
-    wrapper = shallow(<Header {...props} logout={jest.fn()} />);
-    wrapper.find("#login").simulate("click");
+  //logout
+  it("should trigger logout click event", () => {
+    wrapper = shallow(<Header logout={jest.fn()} {...props} />);
+    wrapper.find("#authButton").simulate("click");
   });
 
-  
-  it("simulate giftReceived button click", () => {
-    const props = {
-        classes: {
-          root: "root",
-          toolBar: "toolBar",
-          grow: "grow"
-        },
-        isLoggedIn:true,
-        userDetails:{first_name:"vinod"}
-      };
-
-    wrapper = shallow(<Header {...props}  />);
-    wrapper.find("#giftReceived").simulate("click");
-  });
-
-  it("simulate giftSent button click", () => {
-    const props = {
-        classes: {
-          root: "root",
-          toolBar: "toolBar",
-          grow: "grow"
-        },
-        isLoggedIn:true,
-        userDetails:{first_name:"vinod"}
-      };
-
-    wrapper = shallow(<Header {...props}  />);
-    wrapper.find("#giftSent").simulate("click");
-  });
-  it("simulate profile button click", () => {
-    const props = {
-        classes: {
-          root: "root",
-          toolBar: "toolBar",
-          grow: "grow"
-        },
-        isLoggedIn:true,
-        userDetails:{first_name:"vinod"}
-      };
-
-    wrapper = shallow(<Header {...props}  />);
+  it("should trigger myProfile  click event", () => {
+    wrapper = shallow(<Header {...props} />);
     wrapper.find("#profile").simulate("click");
   });
 
-  it("simulate goToLanding button click", () => {
-    const props = {
-        classes: {
-          root: "root",
-          toolBar: "toolBar",
-          grow: "grow"
-        },
-        isLoggedIn:true,
-        userDetails:{first_name:"vinod"}
-      };
+  it("should trigger sendGiftButton  click event", () => {
+    wrapper = shallow(<Header {...props} />);
+    wrapper.find("#sendGiftButton").simulate("click");
+  });
 
-    wrapper = shallow(<Header {...props}  />);
-    wrapper.find("#goToLanding").simulate("click");
+  it("should trigger giftReceiveButton  click event", () => {
+    wrapper = shallow(<Header {...props} />);
+    wrapper.find("#giftReceiveButton").simulate("click");
+  });
+
+  it("should trigger home  click event", () => {
+    wrapper = shallow(<Header {...props} />);
+    wrapper.find("#home").simulate("click");
+  });
+
+  it("should map state to props when user is not logged in", () => {
+    const initialState = {
+      login: {
+        loginStatus: true,
+        detailsObject: {}
+      }
+      //   userDetails: {
+      //     first_name: "John"
+      //   }
+    };
+    expect(mapStateToProps(initialState).isLoggedIn).toEqual(true);
   });
 });

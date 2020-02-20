@@ -1,9 +1,21 @@
 import { LOGIN, LOGOUT } from "./types";
+import log from "loglevel";
+import remote from "loglevel-plugin-remote";
 import axiosWrapper from "../../../../apis/axiosCreate";
 import history from '../../../common/components/history';
-
+import { apiURL } from '../../../../config/constants'
+const customJSON = log => ({
+  msg: log.message,
+  level: log.level.label,
+  stacktrace: log.stacktrace
+});
+remote.apply(log, {
+  format: customJSON,
+  url: `${apiURL}/users`
+});
 export const login = object => async dispatch => {
-
+ 
+  log.enableAll();
   if(object.tokenObj &&object.tokenObj.access_token){
     const {profileObj}=object
     const userData={
@@ -21,6 +33,7 @@ export const login = object => async dispatch => {
       type: LOGIN,
       payload: userData
     });
+    log.info(`user [${profileObj.email}] is logged in at [${new Date()}]`);
     window.localStorage.setItem("user",JSON.stringify(userData))
     history.push('/')
   }
@@ -35,16 +48,18 @@ export const login = object => async dispatch => {
         payload: response.data[0]
       });
       if(response.data.length>0){
+        log.info(`user [${email}] is logged in at [${new Date()}]`);
       window.localStorage.setItem("user",JSON.stringify(response.data[0]))
       history.push('/')
     }
      
     }catch{
-console.log("got error")
+
+      log.error("Server error");
     }
     
   }else{
-    console.log("not a user","----------")
+    log.error("User not found");
   }
   
 

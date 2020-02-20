@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render Header component 1`] = `
+<div>
+  <WithStyles(ForwardRef(AppBar))
+    position="static"
+  >
+    <WithStyles(ForwardRef(Toolbar))>
+      <WithStyles(ForwardRef(Typography))
+        color="inherit"
+        variant="h6"
+      >
+        <WithStyles(ForwardRef(Button))
+          id="home"
+          onClick={[Function]}
+        >
+          <span
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.2em",
+              }
+            }
+          >
+            YOYOGift
+          </span>
+        </WithStyles(ForwardRef(Button))>
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Button))
+        className="headerButton"
+        color="inherit"
+        id="giftReceiveButton"
+        onClick={[Function]}
+      >
+        GIFTS RECEIVED
+      </WithStyles(ForwardRef(Button))>
+      <WithStyles(ForwardRef(Button))
+        className="headerButton"
+        color="inherit"
+        id="sendGiftButton"
+        onClick={[Function]}
+      >
+        GIFTS SENT
+      </WithStyles(ForwardRef(Button))>
+      <WithStyles(ForwardRef(Button))
+        className="headerButton"
+        color="inherit"
+        id="profile"
+        onClick={[Function]}
+      >
+        yudha
+      </WithStyles(ForwardRef(Button))>
+      <WithStyles(ForwardRef(Button))
+        className="headerButton"
+        color="inherit"
+        id="authButton"
+        onClick={[Function]}
+      >
+        LOGOUT
+      </WithStyles(ForwardRef(Button))>
+    </WithStyles(ForwardRef(Toolbar))>
+  </WithStyles(ForwardRef(AppBar))>
+</div>
+`;

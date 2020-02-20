@@ -1,28 +1,30 @@
 import React from "react";
-import { shallow, mount } from "../../../enzyme";
-import InputTypeComponent from "./inputTypeComponent"
-import sinon from 'sinon';
-describe("<InputTypeComponent/>", () => {
-  
-    let wrapper;
-    beforeEach(() => {
-        
-        wrapper = shallow(<InputTypeComponent />);
-    });
-    it("should render", () => {
+import { shallow } from "../../../enzyme";
+import { shallowToJson } from "enzyme-to-json";
+import { InputTypeComponent } from "./InputTypeComponent";
 
-      expect(wrapper).toBeTruthy();
-    });
-    
-    //      it("responds to name change", done => {
-    //     const event = {target: {name: "endAdornment", value: "spam"}};
-    //     const wrap = mount(
-    //         <InputTypeComponent />
-    //     );
-    //     const handleChangeSpy = sinon.spy(wrap.instance(), "handleInputChange");
-    //     wrap.update(); // Force re-render
-    //     wrap.name('endAdornment').simulate('change', event);
-    //     expect(handleChangeSpy.calledOnce).to.equal(true);
-    //   })
-  });
-  
+let props1 = {
+  endAdornment: false,
+  startAdornment: true,
+  handleInputChange: jest.fn()
+};
+it("should render InputTypeComponent", () => {
+  let wrapper = shallow(<InputTypeComponent {...props1} />);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+let props2 = {
+  endAdornment: true,
+  startAdornment: false,
+  endAdornmentIcon: true
+  //   endAdornmentText: true
+};
+it("should render InputTypeComponent", () => {
+  let wrapper = shallow(<InputTypeComponent {...props2} />);
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it("should render InputTypeComponent", () => {
+  let wrapper = shallow(<InputTypeComponent {...props1} />);
+  shallowToJson(wrapper).children[0].children[1].props.onChange();
+});

@@ -13,14 +13,14 @@ import EditIcon from "@material-ui/icons/BorderColor";
 import { Link } from "react-router-dom";
 import { adminEmail } from "../../../config/constants";
 
-export const styles = theme => ({
+const styles = theme => ({
   card: {
     maxWidth: 400,
     minWidth: 100,
     textAlign: "center"
   },
   media: {
-    height: 40,
+    height: 0,
     flexShrink: 1,
     flexGrow: 1,
     paddingTop: "56.25%"
@@ -50,13 +50,13 @@ export const styles = theme => ({
 export class GiftCard extends React.Component {
   state = { expanded: false };
 
-  handleExpandClick = () => {
-    this.setState(state => ({ expanded: !state.expanded }));
-  };
+  // handleExpandClick = () => {
+  //   this.setState(state => ({ expanded: !state.expanded }));
+  // };
 
-  handleClickCard = () => {
-    this.props.fetchCard(this.props.giftCard.id);
-  }
+  // handleClickCard = () => {
+  //   this.props.fetchCard(this.props.giftCard.id);
+  // }
 
   render() {
     const { classes, giftCard, userEmail } = this.props;
@@ -73,10 +73,10 @@ export class GiftCard extends React.Component {
             adminEmail.includes(userEmail) ? (
               <>
                 <Link to={`/AddUpdateForm/${giftCard.id}`}>
-                <IconButton>
-                  <EditIcon />
-                </IconButton>
-              </Link>
+                  <IconButton>
+                    <EditIcon />
+                  </IconButton>
+                </Link>
               </>
             ) : null
           }

@@ -10,13 +10,13 @@ import { login, logout, createUser } from "../state/actions";
 import { bindActionCreators } from "redux";
 import history from "../../common/components/history";
 import MySnackBar from "../../common/components/Snackbar";
-import Styles from '../../../assets/css/Header.module.css';
+import Styles from "../../../assets/css/Header.module.css";
 
 const styles = {
   root: {
     flexGrow: 1,
     flexShrink: 1,
-    width: '100%' 
+    width: "100%"
   },
   grow: {
     flexGrow: 1
@@ -27,28 +27,28 @@ const styles = {
 };
 
 export class Header extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       showErrorSnack: false
-    }
+    };
   }
+  static contextTypes = {
+    logger: PropTypes.func
+  };
   render() {
-    const { showErrorSnack } = this.state
-    const { classes ,isLoggedIn} = this.props;
-  
+    const { showErrorSnack } = this.state;
+    const { classes, isLoggedIn } = this.props;
+
     return (
       <div className={classes.root}>
-        {
-          showErrorSnack ? 
-          <MySnackBar message='Network Error! Please try again' color='red' />
-          :
-          null
-        }
+        {showErrorSnack ? (
+          <MySnackBar message="Network Error! Please try again" color="red" />
+        ) : null}
         <AppBar position="static">
           <Toolbar className={classes.toolBar}>
             <Typography variant="h6" color="inherit" className={classes.grow}>
-              <Button id="goToLanding"onClick={this.goTolanding}>
+              <Button id="home" onClick={this.goTolanding}>
                 <span style={{ fontSize: "1.2em", color: "#ffffff" }}>
                   YOYOGift
                 </span>
@@ -56,24 +56,40 @@ export class Header extends Component {
             </Typography>
             {/* {this.props.isLoggedIn ? <Button color="inherit" onClick={this.addUpdateForm}>ADD UPDATE FORM</Button> : null} */}
             {isLoggedIn ? (
-              <Button id="giftReceived"className={Styles.headerButton} color="inherit" onClick={this.giftsReceived}>
+              <Button
+                id="giftReceiveButton"
+                className={Styles.headerButton}
+                color="inherit"
+                onClick={this.giftsReceived}
+              >
                 GIFTS RECEIVED
               </Button>
             ) : null}
             {isLoggedIn ? (
-              <Button id="giftSent" className={Styles.headerButton} color="inherit" onClick={this.giftsSend}>
+              <Button
+                id="sendGiftButton"
+                className={Styles.headerButton}
+                color="inherit"
+                onClick={this.giftsSend}
+              >
                 GIFTS SENT
               </Button>
             ) : null}
             {isLoggedIn ? (
-              <Button id="profile" className={Styles.headerButton} color="inherit" onClick={this.myProfile}>
+              <Button
+                id="profile"
+                className={Styles.headerButton}
+                color="inherit"
+                onClick={this.myProfile}
+              >
                 {this.props.userDetails.first_name}
               </Button>
             ) : null}
-            <Button id="login" className={Styles.headerButton}
+            <Button
+              id="authButton"
+              className={Styles.headerButton}
               color="inherit"
-              onClick={this.props.isLoggedIn ?this.logOut: this.logIn }
-             
+              onClick={this.props.isLoggedIn ? this.logOut : this.logIn}
             >
               {isLoggedIn ? "LOGOUT" : "LOGIN"}
             </Button>
@@ -108,7 +124,6 @@ export class Header extends Component {
   logIn = () => {
     history.push("/login");
   };
-
 }
 
 Header.propTypes = {
@@ -121,7 +136,6 @@ export const mapStateToProps = state => {
     userDetails: state.login.detailsObject
   };
 };
-
 
 export const mapDispatchToProps = dispatch => {
   return bindActionCreators({ login, logout, createUser }, dispatch);

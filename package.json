@@ -20,6 +20,8 @@
     "fs-extra": "^8.0.1",
     "history": "^4.9.0",
     "lodash": "^4.17.11",
+    "loglevel": "^1.6.7",
+    "loglevel-plugin-remote": "^0.6.8",
     "material-ui": "^0.20.2",
     "material-ui-search-bar": "^0.4.2",
     "react": "^16.8.6",
@@ -76,7 +78,11 @@
       "src/**/*.js",
       "!<rootDir>/node_modules/",
       "!<rootDir>/src/index.js",
-      "!<rootDir>/src/serviceWorker.js"
+      "!<rootDir>/src/registerServiceWorker.js",
+      "!<rootDir>/src/customServiceWorker.js",
+      "!<rootDir>/src/store/index.js",
+      "!<rootDir>/src/modules/common/utility/Random_rgba.js",
+      "!<rootDir>/src/helpers/logger.js"
     ]
   },
   "devDependencies": {

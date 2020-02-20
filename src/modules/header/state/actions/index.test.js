@@ -57,14 +57,20 @@ it("user login",async () => {
       "cards_gifted":  [],
       "cards_received": [],
       "email": "test",
-      "first_name": "test",
-      "id": "test",
-      "image": "test",
-      "last_name": "test",
+      "first_name": "undefined",
+      "id": "undefined",
+      "image": "undefined",
+      "last_name": "undefined",
       "wishlist":[]} 
     });
 });
-
+it("not a user login",async () => {
+ 
+  const dispatch = jest.fn().mockImplementation(args => {});
+  const returnedFunction = login({});
+ 
+  expect(returnedFunction).toBeTruthy()
+});
 it("logout", () => {
   expect(logout()).toEqual( {"payload": null, "type": "LOGOUT"});
 });

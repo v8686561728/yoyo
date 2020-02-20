@@ -49,18 +49,18 @@ describe("gift", () => {
     });
   });
 
-//   it("redeemCard", async () => {
-//     axiosWrapper.delete = jest
-//       .fn()
-//       .mockImplementation(() => Promise.resolve({ data: { id: 102 } }));
-//     const dispatch = jest.fn().mockImplementation(args => {});
-//     const returnedFunction = redeemCard(0, {});
-//     await returnedFunction(dispatch);
-//     expect(dispatch).toHaveBeenCalledWith({
-//       type: REDEEM_CARD,
-//       payload: { id: 103 }
-//     });
-//   });
+  it("redeemCard", async () => {
+    axiosWrapper.delete = jest
+      .fn()
+      .mockImplementation(() => Promise.resolve({ data: { id: "test" } }));
+    const dispatch = jest.fn().mockImplementation(args => {});
+    const returnedFunction = redeemCard(0, {});
+    await returnedFunction(dispatch);
+    expect(await returnedFunction(dispatch)).toHaveBeenCalledWith({
+      type: REDEEM_CARD,
+      payload: { id: "test" }
+    });
+  });
 
   //   it("updateUserBalance", async () => {
   //     axiosWrapper.delete = jest
@@ -79,13 +79,13 @@ describe("gift", () => {
     expect(await updateUserBalance(0, {})(() => 1)).toBe(undefined);
   });
 
-//   it("updateTransact", async () => {
-//     axiosWrapper.post = jest
-//       .fn()
-//       .mockImplementation(() => Promise.resolve({ data: { id: 102 } }));
-//     //  const dispatch = jest.fn().mockImplementation(args => {});
-//     const returnedFunction = updateTransact({});
-//     //  await returnedFunction(dispatch);
-//     expect(await returnedFunction()).toHaveBeenCalled();
-//   });
+  it("updateTransact", async () => {
+    axiosWrapper.post = jest
+      .fn()
+      .mockImplementation(() => Promise.resolve({ data: { id: 'test' } }));
+    //  const dispatch = jest.fn().mockImplementation(args => {});
+    const returnedFunction = updateTransact({});
+    //  await returnedFunction(dispatch);
+    expect(await returnedFunction()).toHaveBeenCalled();
+  });
 });

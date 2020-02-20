@@ -1,12 +1,12 @@
-import giftsReducer from "./giftsReducer";
-import cardList from "../../../../fixtures/cards";
+import giftsReducer from './giftsReducer';
+import cardList from '../../../../fixtures/cards';
 const cards = { cardList };
 const card = cards[0];
 
-describe("giftsReducer", () => {
-  it("should sets up initial state", () => {
+describe('giftsReducer', () => {
+  it('should sets up initial state', () => {
     const state = giftsReducer(undefined, {
-      type: "@@INIT"
+      type: '@@INIT'
     });
 
     expect(state).toEqual({
@@ -16,9 +16,9 @@ describe("giftsReducer", () => {
     });
   });
 
-  it("FETCH_CARD", () => {
+  it('FETCH_CARD', () => {
     const action = {
-      type: "FETCH_CARD",
+      type: 'FETCH_CARD',
       payload: { data: { card } }
     };
 
@@ -30,9 +30,9 @@ describe("giftsReducer", () => {
     });
   });
 
-  it("FETCH_CARDS", () => {
+  it('FETCH_CARDS', () => {
     const action = {
-      type: "FETCH_CARDS",
+      type: 'FETCH_CARDS',
       payload: { data: { card } }
     };
 
@@ -44,9 +44,9 @@ describe("giftsReducer", () => {
     });
   });
 
-  it("ADMIN_ADD_CARD", () => {
+  it('ADMIN_ADD_CARD', () => {
     const action = {
-      type: "ADMIN_ADD_CARD",
+      type: 'ADMIN_ADD_CARD',
       payload: { data: { card } }
     };
 
@@ -58,23 +58,26 @@ describe("giftsReducer", () => {
     });
   });
 
-  it("ADMIN_UPDATE_CARD", () => {
+  it('ADMIN_UPDATE_CARD', () => {
     const action = {
-      type: "ADMIN_UPDATE_CARD",
-      payload: { giftCards: { card } }
+      type: 'ADMIN_UPDATE_CARD',
+      payload: { data: {id: "1" } }
     };
 
-    const state = giftsReducer(card, action);
-
+    const state = giftsReducer({giftCards: [{id: "1"}]}, action);
     expect(state).toEqual({
       ...state,
       card
     });
+    const cards = giftsReducer({giftCards: [{id: "2"}]}, action);
+    expect(cards).toEqual({
+      giftCards: [{id: "2"}] 
+    });
   });
 
-  it("FETCH_CARD_FILTER", () => {
+  it('FETCH_CARD_FILTER', () => {
     const action = {
-      type: "FETCH_CARD_FILTER",
+      type: 'FETCH_CARD_FILTER',
       payload: { data: { card } }
     };
 
@@ -85,9 +88,9 @@ describe("giftsReducer", () => {
       card
     });
   });
-  it("UPDATE_CARD_COUNT", () => {
+  it('UPDATE_CARD_COUNT', () => {
     const action = {
-      type: "UPDATE_CARD_COUNT",
+      type: 'UPDATE_CARD_COUNT',
       payload: { data: { card } }
     };
 

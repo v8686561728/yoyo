@@ -8,35 +8,32 @@ import {
   IconButton
 } from "@material-ui/core";
 
-const InputTypeComponent = props => {
-  const {fieldFullWidth,inputError,styles,inputDisabled,inputId,inputName,inputType,inputValue,handleInputChange,inputPlaceholder,endAdornment,endAdornmentIcon,handleEndAdornmentButtonClick,endAdornmentText,startAdornment,startAdornmentText,inputHelperText}=props
+export const InputTypeComponent = props => {
   return (
     <React.Fragment>
       <FormControl
-        fullWidth={fieldFullWidth}
-        error={inputError}
-        style={styles}
-        disabled={inputDisabled}
+        fullWidth={props.fieldFullWidth}
+        error={props.inputError}
+        style={props.styles}
+        disabled={props.inputDisabled}
       >
-        <InputLabel htmlFor={inputId}>{inputName}</InputLabel>
+        <InputLabel htmlFor={props.inputId}>{props.inputName}</InputLabel>
         <Input
-        
-        name={"endAdornment"}
-          type={inputType}
-          id={inputId}
-          value={inputValue}
-          onChange={event => handleInputChange(event)}
-          placeholder={inputPlaceholder}
+          type={props.inputType}
+          id={props.inputId}
+          value={props.inputValue}
+          onChange={event => props.handleInputChange(event)}
+          placeholder={props.inputPlaceholder}
           endAdornment={
-            endAdornment ? (
+            props.endAdornment ? (
               <InputAdornment position="end">
                 {" "}
-                {endAdornmentIcon ? (
-                  <IconButton onClick={handleEndAdornmentButtonClick}>
-                    {endAdornmentIcon}
+                {props.endAdornmentIcon ? (
+                  <IconButton onClick={props.handleEndAdornmentButtonClick}>
+                    {props.endAdornmentIcon}
                   </IconButton>
                 ) : (
-                  endAdornmentText
+                  props.endAdornmentText
                 )}{" "}
               </InputAdornment>
             ) : (
@@ -44,17 +41,17 @@ const InputTypeComponent = props => {
             )
           }
           startAdornment={
-            startAdornment ? (
+            props.startAdornment ? (
               <InputAdornment position="start">
                 {" "}
-                {startAdornmentText}{" "}
+                {props.startAdornmentText}{" "}
               </InputAdornment>
             ) : (
               <React.Fragment />
             )
           }
         />
-        <FormHelperText> {inputHelperText} </FormHelperText>
+        <FormHelperText> {props.inputHelperText} </FormHelperText>
       </FormControl>
     </React.Fragment>
   );
