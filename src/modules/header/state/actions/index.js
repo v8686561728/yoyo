@@ -4,6 +4,7 @@ import remote from "loglevel-plugin-remote";
 import axiosWrapper from "../../../../apis/axiosCreate";
 import history from '../../../common/components/history';
 import { apiURL } from '../../../../config/constants'
+
 const customJSON = log => ({
   msg: log.message,
   level: log.level.label,
@@ -13,9 +14,10 @@ remote.apply(log, {
   format: customJSON,
   url: `${apiURL}/log`
 });
+  log.enableAll();
 export const login = object => async dispatch => {
  
-  log.enableAll();
+
   if(object.tokenObj &&object.tokenObj.access_token){
     const {profileObj}=object
     const userData={
@@ -33,7 +35,7 @@ export const login = object => async dispatch => {
       type: LOGIN,
       payload: userData
     });
-    log.error(`user [${profileObj.email}] is logged in at [${new Date()}]`);
+    log.info(`user [${profileObj.email}] is logged in at [${new Date()}]`);
     window.localStorage.setItem("user",JSON.stringify(userData))
     history.push('/')
   }

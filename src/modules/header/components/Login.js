@@ -76,13 +76,14 @@ export function Login({ login }) {
               <TextField
                 variant="outlined"
                 margin="normal"
-                required
+               
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
+                required="true"
                 onChange={e => {
                   setEmail(e.target.value);
                 }}
@@ -91,8 +92,9 @@ export function Login({ login }) {
               <TextField
                 variant="outlined"
                 margin="normal"
-                required
+            
                 fullWidth
+                required="true"
                 name="password"
                 label="Password"
                 type="password"
